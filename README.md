@@ -28,7 +28,7 @@ has_many :items
 | preparation_day_id  | integer | null: false|
 | sipping_area_id     | integer | null: false|
 | price               | integer | null: false |
-| users                | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ## Association
 
@@ -39,8 +39,8 @@ belong_to :user
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
-| users    | references | null: false, foreign_key: true |
-| items   | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -58,7 +58,7 @@ has_one :shipping_address
 | address            | string| null: false|
 | building           | string|            |
 | phone_number       | string| null: false|
-| purchase_managements|references | null: false, foreign_key: true |
+| purchase_management|references | null: false, foreign_key: true |
 ## Association
 
 
