@@ -9,7 +9,7 @@
 | last_name          | string | null: false            |
 | first_name_kana    | string | null: false            |
 | last_name_kana     | string | null: false            |
-| barth_day          | date | null: false            |
+| barth_day          | date   | null: false            |
 
 ## Association
 
@@ -23,11 +23,11 @@ has_many :items
 | item_name          | string | null: false |
 | introduction       | text   | null: false |
 | category           | integer | null: false |
-| item_condition     | string | null: false |
-| postage_memu_id     | integer | null: false|
-| preparation_day_id  | integer | null: false|
-| sipping_area_id     | integer | null: false|
-| price_id            | integer | null: false|
+| item_condition     | integer  | null: false |
+| postage_memu_id    | references | null: false, foreign_key: true |
+| preparation_day_id  | references | null: false, foreign_key: true |
+| sipping_area_id     | references | null: false, foreign_key: true |
+| price_id            | references | null: false, foreign_key: true |
 
 
 ## Association
@@ -35,7 +35,7 @@ has_many :items
 has_one :purchase_managements
 belong_to :user
 
-## purchase_management テーブル
+## purchase_managements テーブル
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
@@ -46,20 +46,20 @@ belong_to :user
 
 has_many :users
 has_one :items
-has_one :shipping_addresses
+has_one :shipping_addresseses
 
 ## shipping_address テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| post_code          | string | null: false |
-| sipping_area_id    | integer| null: false,foreign_key: true|
-| municipalities     | string| null: false, foreign_key: true |
-| address            | string| null: false, foreign_key: true |
-| building           | string|              foreign_key: true |
-| phone_number       | string| null: false, foreign_key: true |
+| Column           | Type   | Options     |
+| -----------------| ------ | ----------- |
+| post_code        | string | null: false |
+| sipping_area_id  | references | null: false, foreign_key:true |
+| municipalities   | references | null: false, foreign_key: true |
+| address          | references | null: false, foreign_key: true |
+| building         | references |              foreign_key: true |
+| phone_number     | references | null: false, foreign_key: true |
 
 ## Association
 
 
-belong_to :purchase_management
+belong_to :purchase_managements
