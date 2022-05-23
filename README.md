@@ -3,7 +3,7 @@
 | Column             | Type   | Options                |
 | ------------------ | ------ | -----------            |
 | email              | string | unique: true,null:fales|
-| password           | string | unique: true,null:fales|
+| password           | string | null: fales            |
 | encrypted_password | string | null: false            |
 | nickname           | string | null: false            |
 | first_name         | string | null: false            |
@@ -14,9 +14,8 @@
 
 ## Association
 
-belong_to: shipping_address
-belong_to:purchase_management
-belong_to : items
+has_many:purchase_management
+has_many: items
 
 ## items テーブル
 
@@ -27,32 +26,28 @@ belong_to : items
 | introduction       | text   | null: false |
 | category           | integer | null: false |
 | item_condition     | string | null: false |
-| postage_memu       | integer | null: false |
-| preparation_day    | integer | null: false |
-| sipping_area       | integer | null: false |
-| day_to_shipping    | integer | null: false |
-| price              | integer | null: false |
+| postage_memus       | integer | null: false |
+| preparation_days    | integer | null: false,foreign_key: true|
+| sipping_areas       | integer | null: false, foreign_key: true |
+| day_to_shippings    | integer | null: false, foreign_key: true |
+| price               | integer | null: false,foreign_key: true |
 
 
 ## Association
 
-has_many : items
-has_many : shipping_address
+has_one : purchase_management
 belong_to:users
 
 ## purchase_management テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| credit_card        | integer| null: false |
-| card_validity      | integer| null: false |
-| security_code      | integer| null: false |
+| Column  | Type       | Options                        |
+| ------  | ---------- | ------------------------------ |
+| users   | references | null: false, foreign_key: true |
+| items   | references | null: false, foreign_key: true |
 
-## Association
+### Association
 
-belong_to : users
-belong_to : shipping_address
-has_many : items
+- belongs_to :shipping_address
 
 ## shipping_address テーブル
 
@@ -61,12 +56,10 @@ has_many : items
 | post_code          | integer| null: false |
 | prefectures        | integer| null: false |
 | municipalities     | integer| null: false |
-| address            | integer| null: false |
-| building           | integer|             |
-| phone_number       | integer| null: false |
+| address            | string| null: false |
+| building           | string|             |
+| phone_number       | string| null: false |
 
 ## Association
 
 belong_to :purchase_management
-belong_to:users
-has_many : items
