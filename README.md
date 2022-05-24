@@ -1,24 +1,65 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                |
+| ------------------ | ------ | -----------            |
+| email              | string | unique: true,null:fales|
+| encrypted_password | string | null: false            |
+| nickname           | string | null: false            |
+| first_name         | string | null: false            |
+| last_name          | string | null: false            |
+| first_name_kana    | string | null: false            |
+| last_name_kana     | string | null: false            |
+| birth_day          | date | null: false              |
 
-Things you may want to cover:
+## Association
 
-* Ruby version
+has_many :purchase_managements
+has_many :items
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| item_name          | string | null: false |
+| introduction       | text   | null: false |
+| category_id        | integer | null: false |
+| item_condition_id  | integer  | null: false |
+| postage_memu_id     | integer | null: false|
+| preparation_day_id  | integer | null: false|
+| sipping_area_id     | integer | null: false|
+| price               | integer | null: false |
+| user                | references | null: false, foreign_key: true |
 
-* Database creation
+## Association
 
-* Database initialization
+has_one :purchase_management
+belong_to :user
 
-* How to run the test suite
+## purchase_managements テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column  | Type       | Options                        |
+| ------  | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
-* Deployment instructions
+### Association
 
-* ...
+has_many :users
+has_one :item
+has_one :shipping_address
+
+## shipping_addresses テーブル
+
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| post_code          | string | null: false |
+| sipping_area_id    | integer| null: false|
+| municipalities     | string| null: false |
+| address            | string| null: false|
+| building           | string|            |
+| phone_number       | string| null: false|
+| purchase_management|references | null: false, foreign_key: true |
+## Association
+
+
+belong_to :purchase_management
