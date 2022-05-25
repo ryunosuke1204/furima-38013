@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -13,6 +11,5 @@ class User < ApplicationRecord
          validates :last_name_kana, presence: true, format: { with: /\A([ァ-ン]|ー)+\z/, message: "is must NOT contain any other characters than alphanumerics." }
          validates :first_name_kana, presence: true,  format: { with: /\A([ァ-ン]|ー)+\z/, message: "is must NOT contain any other characters than alphanumerics." }
          validates :birth_day, presence: true
-         VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-         validates :password,presence: true, format: { with: VALID_PASSWORD_REGEX, message: "Password must include both single-byte alphanumerical characters" }
+         validates :password,presence: true, format: { with: /\A[a-z0-9]+\z/i, message: "Password must include both single-byte alphanumerical characters" }
         end

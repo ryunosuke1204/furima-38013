@@ -30,3 +30,8 @@ class ItemsController < ApplicationController
 
   
 end
+
+private
+def item_params
+  params.require(:item).permit(:nickname,:email,:password,:last_name,:first_name,:last_name_kana,:first_name_kana,:birth_day).merge(user_id: current_user.id)
+end
