@@ -60,6 +60,28 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')      
       end
+
+      it 'passwordが英字のみのパスワードでは登録できない' do
+        @user.password = 'aaaaaa'
+        @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Password must include both single-byte alphanumerical characters')      
+      end
+    
+      it 'passwordが数字のみのパスワードでは登録できない' do
+        @user.password = '000000'
+        @user.password_confirmation = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Password must include both single-byte alphanumerical characters')      
+      end
+    
+      it 'passwordが全角文字を含むパスワードでは登録できない' do
+        @user.password = '111あaa'
+        @user.password_confirmation = '111あaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Password must include both single-byte alphanumerical characters')      
+      end
+    
     
         it 'first_nameが空では登録できない' do
           @user.first_name = ''
