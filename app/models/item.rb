@@ -1,8 +1,16 @@
 class Item < ApplicationRecord
+ActiveHash::Associations::ActiveRecordExtensions
 
 has_one :purchase_management
 belongs_to :user
 has_one_attached :image
+
+belongs_to :category
+belongs_to :item_condition
+belongs_to :postage_memu
+belongs_to :preparation_day
+belongs_to :sipping_area
+
 
 validates :item_name, presence: true
 validates :introduction, presence: true
