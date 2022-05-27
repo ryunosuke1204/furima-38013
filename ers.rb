@@ -4,13 +4,13 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
   def self.up
     change_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
       t.string :nickname,           null: false
       t.string :first_name,         null: false
       t.string :first_name_kana,    null: false
       t.string :last_name_kana,     null: false
-      t.date   :birth_day,          null: false   
+      t.date   :birth_day,          null: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -36,7 +36,6 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
