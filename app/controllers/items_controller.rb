@@ -1,37 +1,35 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    #@items = Item.all
+    # @items = Item.all
+    # @items = Item.order('created_at DESC')
   end
 
-  #def new
-    #@item = Item.new
-  #end
+  def new
+    @item = Item.new
+  end
 
-  #def create
-    #Item.create(item_params)
-  #end
+  def create
+    @item = Item.new(item_params)
 
-  #def destroy
-    #item = Itme.find(params[:id])
-    #item.destroy
-  #end
+    if @item.save
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end
 
-  #def edit
-  #end
+  def edit
+  end
 
-  #def update
-    #item = Itme.find(params[:id])
-    #item.update(item_params)
-  #end
+  def show
+  end
 
-  #def show
-  #end
+  private
 
-  
+  def item_params
+    params.require(:item).permit(:item_name, :introduction, :price, :item_condition_id, :postage_memu_id, :preparation_day_id,
+                                 :sipping_area_id, :category_id, :image).merge(user_id: current_user.id)
+  end
 end
-
-#private
-#def item_params
-  #params.require(:item).permit(:nickname,:email,:password,:last_name,:first_name,:last_name_kana,:first_name_kana,:birth_day).merge(user_id: current_user.id)
-#end
