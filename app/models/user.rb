@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          #has_many :purchase_managements
-         #has_many :items
+         has_many :items
 
          validates :nickname, presence: true
          validates :last_name, presence: true,format:{with:/[^\x01-\x7Eｦ-ﾟ]+/,message:"Please enter in full-width."}   
