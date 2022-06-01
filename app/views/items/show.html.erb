@@ -8,7 +8,7 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image.variant(resize: '630x500') ,class:"item-box-img" if @item.image.attached? %>
-         <% if @items.present? %>
+         <% if @item.purchase_management.present? %> 
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -24,14 +24,17 @@
     </div>
 
  <% if user_signed_in? %>
- <% if current_user.id == @item.user_id %> 
+ <% if current_user.id == @item.user_id && @item.purchase_management.nil?%> 
     <%= link_to "商品の編集",edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
- <% else %> 
-    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+ <% elsif  @item.purchase_management.present? %>  
+   <%= link_to "売り切れました",item_path(@item),class:"disabled-button bold" %>
+   <% else %>
+    <%= link_to "購入画面に進む", item_orders_path(@item.id) ,method: :get,class:"item-red-btn"%>
 <% end %>
 <% end %>
+
 
     <div class="item-explain-box">
       <span><%= @item.introduction %></span>
