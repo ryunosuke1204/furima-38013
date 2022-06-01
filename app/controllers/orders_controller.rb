@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!
   before_action :non_purchased_item, only: [:index, :create]
 
   def index
@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order = Order.new(order_params)
     if @order.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -30,7 +31,6 @@ class OrdersController < ApplicationController
 
   def non_purchased_item
     @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == @item.user_id || @item.purchase_management.present?
   end
 
 end
