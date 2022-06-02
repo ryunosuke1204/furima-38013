@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_060759) do
     t.integer "sipping_area_id", null: false
     t.string "municipalities", null: false
     t.string "address", null: false
-    t.string "building", null: false
+    t.string "building"
     t.string "phone_number", null: false
     t.bigint "purchase_management_id", null: false
     t.datetime "created_at", precision: 6, null: false

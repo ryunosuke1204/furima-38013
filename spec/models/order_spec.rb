@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
+  describe '配送先情報の保存' do
   before do
-    @order = FactoryBot.build(:order)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order = FactoryBot.build(:order, user_id: user.id, item_id: item.id)
+    sleep 0.1 
   end
 
-  describe '配送先情報の保存' do
     context '配送先情報の保存ができるとき' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order).to be_valid
@@ -101,6 +104,13 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is invalid')
       end
+
+      it '電話番号が9桁以下では登録できない' do
+        @order.phone_number = 12_345_678_9
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Phone number is invalid')
+      end
+
       it 'トークンが空だと保存できないこと' do
         @order.token = nil
         @order.valid?
