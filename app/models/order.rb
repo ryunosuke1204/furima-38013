@@ -2,11 +2,11 @@ class Order
   include ActiveModel::Model
   attr_accessor :post_code, :sipping_area_id, :municipalities, :address, :building, :phone_number, :user_id, :item_id,:token
   
-  validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "例）123-4567"}
+  validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)'}
   validates :sipping_area_id, numericality: {other_than: 0, message: "can't be blank"}
   validates :municipalities,presence: true
   validates :address,presence: true
-  validates :phone_number, format: {with: /\d{10,11}/}, length: {maximum: 11}
+  validates :phone_number, format: format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
   validates :user_id,presence: true
   validates :item_id,presence: true
   validates :token, presence: true
