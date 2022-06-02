@@ -10,6 +10,7 @@ RSpec.describe Order, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order).to be_valid
       end
+
       it 'user_idが空でなければ保存できる' do
         @order.user_id = 1
         expect(@order).to be_valid
@@ -58,37 +59,37 @@ RSpec.describe Order, type: :model do
       it '郵便番号が空だと保存できないこと' do
         @order.post_code = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("post_code can't be blank", 'post_code is invalid. Include hyphen(-)')
+        expect(@order.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
       end
       it '郵便番号にハイフンがないと保存できないこと' do
         @order.post_code = 1_234_567
         @order.valid?
-        expect(@order.errors.full_messages).to include('post_code is invalid. Include hyphen(-)')
+        expect(@order.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
       end
       it '都道府県が「---」だと保存できないこと' do
         @order.sipping_area_id = 0
         @order.valid?
-        expect(@order.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order.errors.full_messages).to include("Sipping area can't be blank")
       end
       it '都道府県が空だと保存できないこと' do
         @order.sipping_area_id = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order.errors.full_messages).to include("Sipping area can't be blank")
       end
       it '市区町村が空だと保存できないこと' do
         @order.municipalities = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("municipalities can't be blank")
+        expect(@order.errors.full_messages).to include("Municipalities can't be blank")
       end
       it '番地が空だと保存できないこと' do
         @order.address = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("address can't be blank")
+        expect(@order.errors.full_messages).to include("Address can't be blank")
       end
       it '電話番号が空だと保存できないこと' do
         @order.phone_number = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number can't be blank")
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
       it '電話番号にハイフンがあると保存できないこと' do
         @order.phone_number = '123 - 1234 - 1234'

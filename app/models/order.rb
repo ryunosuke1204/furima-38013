@@ -6,7 +6,7 @@ class Order
   validates :sipping_area_id, numericality: {other_than: 0, message: "can't be blank"}
   validates :municipalities,presence: true
   validates :address,presence: true
-  validates :phone_number, format: format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
+  validates :phone_number, format: {with: /\A\d{10}$|^\d{11}\z/ }
   validates :user_id,presence: true
   validates :item_id,presence: true
   validates :token, presence: true
