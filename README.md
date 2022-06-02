@@ -33,19 +33,19 @@ has_many :items
 ## Association
 
 has_one :purchase_management
-belong_to :user
+belongs_to :user
 
 ## purchase_managements テーブル
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| user_id    | references | null: false, foreign_key: true |
+| item_id   | references | null: false, foreign_key: true |
 
 ### Association
 
-has_many :users
-has_one :item
+belongs_to :user
+belongs_to :item
 has_one :shipping_address
 
 ## shipping_addresses テーブル
@@ -62,4 +62,4 @@ has_one :shipping_address
 ## Association
 
 
-belong_to :purchase_management
+belongs_to :purchase_management

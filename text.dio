@@ -67,7 +67,7 @@
                 <mxCell id="66" value="&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;&quot;&gt;preparation_day_id&lt;/span&gt;　&lt;/font&gt;(integer/null:fales)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#FFFFFF;labelBackgroundColor=none;textDirection=ltr;fontFamily=Helvetica;" parent="55" vertex="1">
                     <mxGeometry x="22" y="135" width="250" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="69" value="&lt;div style=&quot;font-size: 12px ; line-height: 18px&quot;&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;has_one :purchase_management&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;belong_to :user&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=6;" parent="55" vertex="1">
+                <mxCell id="69" value="&lt;div style=&quot;font-size: 12px ; line-height: 18px&quot;&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;has_one :purchase_management&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#ffffff&quot;&gt;belongs_to :user&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=6;" parent="55" vertex="1">
                     <mxGeometry y="230" width="320" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="96" value="&lt;div style=&quot;line-height: 18px&quot;&gt;&lt;div&gt;user ( references / null: false, foreign_key: true )&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontFamily=Helvetica;fontColor=#FFFFFF;" vertex="1" parent="55">
@@ -120,7 +120,7 @@
                         <mxPoint x="-632.125" y="-620" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="eo_4ubGzzUAQcjpBgNsD-160" value="&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;belong_to :&lt;span style=&quot;color: rgb(255 , 255 , 255)&quot;&gt;purchase_management&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=6;" parent="1" vertex="1">
+                <mxCell id="eo_4ubGzzUAQcjpBgNsD-160" value="&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;belongs_to :&lt;span style=&quot;color: rgb(255 , 255 , 255)&quot;&gt;purchase_management&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=6;" parent="1" vertex="1">
                     <mxGeometry x="-780" y="-380" width="380" height="50" as="geometry"/>
                 </mxCell>
             </root>

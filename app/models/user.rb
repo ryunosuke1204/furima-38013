@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   # has_many :purchase_managements
   has_many :items
-
+  has_many :orders
+  
   validates :nickname, presence: true
   validates :last_name, presence: true, format: { with: /[^\x01-\x7Eｦ-ﾟ]+/, message: 'Please enter in full-width.' }
   validates :first_name, presence: true, format: { with: /[^\x01-\x7Eｦ-ﾟ]+/, message: 'Please enter in full-width.' }
